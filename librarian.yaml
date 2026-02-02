@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-29fcc70cfa4e-20260202155307
+version: 0.7.0-448b633afadc-20260202172158
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -62,6 +62,9 @@ libraries:
     apis:
       - path: google/ai/generativelanguage/v1beta
     copyright_year: "2025"
+    keep:
+      - example
+      - test
     output: generated/google_cloud_ai_generativelanguage_v1beta
     specification_format: protobuf
     dart:
@@ -145,6 +148,9 @@ libraries:
     apis:
       - path: google/cloud/aiplatform/v1beta1
     copyright_year: "2025"
+    keep:
+      - example
+      - test
     output: generated/google_cloud_aiplatform_v1beta1
     specification_format: protobuf
     dart:
@@ -312,6 +318,8 @@ libraries:
     apis:
       - path: google/logging/v2
     copyright_year: "2025"
+    keep:
+      - test
     output: generated/google_cloud_logging_v2
     specification_format: protobuf
     dart:
@@ -332,6 +340,9 @@ libraries:
       operations.
 
       [Long-running operations]: https://google.aip.dev/151
+    keep:
+      - test
+      - src/longrunning.p.dart
     output: generated/google_cloud_longrunning
     specification_format: protobuf
     dart:
@@ -344,6 +355,9 @@ libraries:
       - path: google/protobuf
     copyright_year: "2025"
     description_override: Core Protobuf types used by most services.
+    keep:
+      - test
+      - src/protobuf.p.dart
     output: generated/google_cloud_protobuf
     specification_format: protobuf
     dart:
@@ -356,6 +370,9 @@ libraries:
     apis:
       - path: google/rpc
     copyright_year: "2025"
+    keep:
+      - test
+      - src/rpc.p.dart
     output: generated/google_cloud_rpc
     specification_format: protobuf
     dart:
@@ -367,6 +384,8 @@ libraries:
     apis:
       - path: schema/google/showcase/v1beta1
     copyright_year: "2025"
+    keep:
+      - test
     output: generated/google_cloud_showcase_v1beta1
     skip_publish: true
     specification_format: protobuf
@@ -377,6 +396,8 @@ libraries:
     apis:
       - path: google/cloud/secretmanager/v1
     copyright_year: "2025"
+    keep:
+      - test
     output: generated/google_cloud_secretmanager_v1
     specification_format: protobuf
     dart:
@@ -385,6 +406,8 @@ libraries:
   - name: google_cloud_src_google_protobuf
     apis:
       - path: src/google/protobuf
+    keep:
+      - test
     output: generated/google_cloud_protojson_conformance
     skip_publish: true
     specification_format: protobuf
