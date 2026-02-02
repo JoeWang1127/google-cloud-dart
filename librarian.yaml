@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-448b633afadc-20260202172158
+version: not available
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -63,8 +63,15 @@ libraries:
       - path: google/ai/generativelanguage/v1beta
     copyright_year: "2025"
     keep:
-      - example
-      - test
+      - example/application_default_credentials.dart
+      - example/main.dart
+      - example/streamed_response.dart
+      - test/embeddings_embed_content_recording.json
+      - test/embeddings_test.dart
+      - test/generate_test.dart
+      - test/generative_streamed_recording.json
+      - test/model_list_recording.json
+      - test/model_test.dart
     output: generated/google_cloud_ai_generativelanguage_v1beta
     specification_format: protobuf
     dart:
@@ -149,8 +156,9 @@ libraries:
       - path: google/cloud/aiplatform/v1beta1
     copyright_year: "2025"
     keep:
-      - example
-      - test
+      - example/main.dart
+      - test/generate_test.dart
+      - test/generative_streamed_recording.json
     output: generated/google_cloud_aiplatform_v1beta1
     specification_format: protobuf
     dart:
@@ -319,7 +327,9 @@ libraries:
       - path: google/logging/v2
     copyright_year: "2025"
     keep:
-      - test
+      - test/write_log_entries_partial_errors_recording.json
+      - test/write_log_entries_recording.json
+      - test/write_log_test.dart
     output: generated/google_cloud_logging_v2
     specification_format: protobuf
     dart:
@@ -341,7 +351,7 @@ libraries:
 
       [Long-running operations]: https://google.aip.dev/151
     keep:
-      - test
+      - test/operation_test.dart
       - src/longrunning.p.dart
     output: generated/google_cloud_longrunning
     specification_format: protobuf
@@ -356,7 +366,13 @@ libraries:
     copyright_year: "2025"
     description_override: Core Protobuf types used by most services.
     keep:
-      - test
+      - test/any_test.dart
+      - test/duration_test.dart
+      - test/encoding_test.dart
+      - test/fieldmask_test.dart
+      - test/struct_test.dart
+      - test/timestamp_test.dart
+      - test/wrappers_test.dart
       - src/protobuf.p.dart
     output: generated/google_cloud_protobuf
     specification_format: protobuf
@@ -371,7 +387,9 @@ libraries:
       - path: google/rpc
     copyright_year: "2025"
     keep:
-      - test
+      - test/client_test.dart
+      - test/exceptions_test.dart
+      - test/status_test.dart
       - src/rpc.p.dart
     output: generated/google_cloud_rpc
     specification_format: protobuf
@@ -385,7 +403,9 @@ libraries:
       - path: schema/google/showcase/v1beta1
     copyright_year: "2025"
     keep:
-      - test
+      - test/compliance_test.dart
+      - test/echo_test.dart
+      - test/showcase_server.dart
     output: generated/google_cloud_showcase_v1beta1
     skip_publish: true
     specification_format: protobuf
@@ -397,7 +417,8 @@ libraries:
       - path: google/cloud/secretmanager/v1
     copyright_year: "2025"
     keep:
-      - test
+      - test/create_and_update_recording.json
+      - test/secret_test.dart
     output: generated/google_cloud_secretmanager_v1
     specification_format: protobuf
     dart:
@@ -407,7 +428,7 @@ libraries:
     apis:
       - path: src/google/protobuf
     keep:
-      - test
+      - test/serialization_test.dart
     output: generated/google_cloud_protojson_conformance
     skip_publish: true
     specification_format: protobuf
