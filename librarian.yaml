@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: not available
+version: 0.7.0-97bcffc4ccbb-20260202192332
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -352,7 +352,7 @@ libraries:
       [Long-running operations]: https://google.aip.dev/151
     keep:
       - test/operation_test.dart
-      - src/longrunning.p.dart
+      - lib/src/longrunning.p.dart
     output: generated/google_cloud_longrunning
     specification_format: protobuf
     dart:
@@ -373,7 +373,7 @@ libraries:
       - test/struct_test.dart
       - test/timestamp_test.dart
       - test/wrappers_test.dart
-      - src/protobuf.p.dart
+      - lib/src/protobuf.p.dart
     output: generated/google_cloud_protobuf
     specification_format: protobuf
     dart:
@@ -390,7 +390,7 @@ libraries:
       - test/client_test.dart
       - test/exceptions_test.dart
       - test/status_test.dart
-      - src/rpc.p.dart
+      - lib/src/rpc.p.dart
     output: generated/google_cloud_rpc
     specification_format: protobuf
     dart:
