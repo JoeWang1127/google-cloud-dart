@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-bac51ca63b29-20260201005118
+version: 0.7.0-4ceccb46195a-20260202020030
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
