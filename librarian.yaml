@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-97bcffc4ccbb-20260202192332
+version: 0.7.0-562154ef8c74-20260202213757
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -375,6 +375,8 @@ libraries:
       - test/wrappers_test.dart
       - lib/src/protobuf.p.dart
     output: generated/google_cloud_protobuf
+    roots:
+      - protobuf
     specification_format: protobuf
     dart:
       dev_dependencies: test
@@ -407,6 +409,9 @@ libraries:
       - test/echo_test.dart
       - test/showcase_server.dart
     output: generated/google_cloud_showcase_v1beta1
+    roots:
+      - showcase
+      - googleapis
     skip_publish: true
     specification_format: protobuf
     dart:
@@ -430,6 +435,8 @@ libraries:
     keep:
       - test/serialization_test.dart
     output: generated/google_cloud_protojson_conformance
+    roots:
+      - conformance
     skip_publish: true
     specification_format: protobuf
     dart:
