@@ -376,7 +376,7 @@ libraries:
       - lib/src/protobuf.p.dart
     output: generated/google_cloud_protobuf
     roots:
-      - protobuf
+      - protobuf-src
     specification_format: protobuf
     dart:
       dev_dependencies: test
