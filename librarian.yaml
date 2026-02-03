@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-126f81cb6f6d-20260203153604
+version: 0.7.0-af20483dec2d-20260203155259
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -164,6 +164,8 @@ libraries:
     dart:
       api_keys_environment_variables: GOOGLE_API_KEY
       dev_dependencies: googleapis_auth,test,test_utils
+      prefixes:
+        prefix:google.protobuf: protobuf
       readme_after_title_text: |-
         > [!TIP]
         > Flutter applications should use
@@ -375,8 +377,6 @@ libraries:
       - test/wrappers_test.dart
       - lib/src/protobuf.p.dart
     output: generated/google_cloud_protobuf
-    roots:
-      - protobuf-src
     specification_format: protobuf
     dart:
       dev_dependencies: test
@@ -390,8 +390,6 @@ libraries:
     keep:
       - test/serialization_test.dart
     output: generated/google_cloud_protojson_conformance
-    roots:
-      - conformance
     skip_publish: true
     specification_format: protobuf
     dart:
@@ -402,12 +400,6 @@ libraries:
       - path: google/rpc
     copyright_year: "2025"
     keep:
-      - lib/exceptions.dart
-      - lib/service_client.dart
-      - lib/src/exceptions.dart
-      - lib/src/versions.dart
-      - lib/src/vm.dart
-      - lib/src/web.dart
       - test/client_test.dart
       - test/exceptions_test.dart
       - test/status_test.dart
@@ -436,14 +428,10 @@ libraries:
       - path: schema/google/showcase/v1beta1
     copyright_year: "2025"
     keep:
-      - dart_test.yaml
       - test/compliance_test.dart
       - test/echo_test.dart
       - test/showcase_server.dart
     output: generated/google_cloud_showcase_v1beta1
-    roots:
-      - showcase
-      - googleapis
     skip_publish: true
     specification_format: protobuf
     dart:
