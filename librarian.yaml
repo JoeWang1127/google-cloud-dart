@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-864d5b42b0e7-20260203212502
+version: 0.7.0-54411738ab10-20260203213312
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -411,6 +411,7 @@ libraries:
       dev_dependencies: path,test,test_utils
       include_list:
         - test_messages_proto3.proto
+      library_path_override: google_cloud_protobuf_test_messages_proto3.dart
       repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_protojson_conformance
   - name: google_cloud_rpc
     apis:
