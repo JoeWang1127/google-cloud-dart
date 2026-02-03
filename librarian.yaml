@@ -392,7 +392,13 @@ libraries:
       - test/client_test.dart
       - test/exceptions_test.dart
       - test/status_test.dart
+      - lib/src/exceptions.dart
       - lib/src/rpc.p.dart
+      - lib/src/versions.dart
+      - lib/src/vm.dart
+      - lib/src/web.dart
+      - lib/exceptions.dart
+      - lib/service_client.dart
     output: generated/google_cloud_rpc
     specification_format: protobuf
     dart:
