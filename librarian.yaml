@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-7e4576890dc8-20260203183207
+version: 0.7.0-eb4f85e57185-20260203183756
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -404,6 +404,12 @@ libraries:
       - path: google/rpc
     copyright_year: "2025"
     keep:
+      - lib/exceptions.dart
+      - lib/service_client.dart
+      - lib/src/exceptions.dart
+      - lib/src/versions.dart
+      - lib/src/vm.dart
+      - lib/src/web.dart
       - test/client_test.dart
       - test/exceptions_test.dart
       - test/status_test.dart
@@ -432,6 +438,7 @@ libraries:
       - path: schema/google/showcase/v1beta1
     copyright_year: "2025"
     keep:
+      - dart_test.yaml
       - test/compliance_test.dart
       - test/echo_test.dart
       - test/showcase_server.dart
