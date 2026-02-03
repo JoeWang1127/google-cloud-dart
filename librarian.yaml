@@ -414,6 +414,7 @@ libraries:
       - test/compliance_test.dart
       - test/echo_test.dart
       - test/showcase_server.dart
+      - dart_test.yaml
     output: generated/google_cloud_showcase_v1beta1
     roots:
       - showcase
