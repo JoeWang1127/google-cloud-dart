@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-3f2e3405d847-20260203192150
+version: 0.7.0-1083278ef2fe-20260203193216
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -368,6 +368,7 @@ libraries:
     copyright_year: "2025"
     description_override: Core Protobuf types used by most services.
     keep:
+      - lib/src/encoding.dart
       - test/any_test.dart
       - test/duration_test.dart
       - test/encoding_test.dart
