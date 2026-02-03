@@ -13,7 +13,7 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-562154ef8c74-20260202213757
+version: 0.7.0-126f81cb6f6d-20260203153604
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
@@ -384,59 +384,7 @@ libraries:
       part_file: src/protobuf.p.dart
       repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_protobuf
       title_override: Core Protobuf Types
-  - name: google_cloud_rpc
-    apis:
-      - path: google/rpc
-    copyright_year: "2025"
-    keep:
-      - test/client_test.dart
-      - test/exceptions_test.dart
-      - test/status_test.dart
-      - lib/src/exceptions.dart
-      - lib/src/rpc.p.dart
-      - lib/src/versions.dart
-      - lib/src/vm.dart
-      - lib/src/web.dart
-      - lib/exceptions.dart
-      - lib/service_client.dart
-    output: generated/google_cloud_rpc
-    specification_format: protobuf
-    dart:
-      dependencies: googleapis_auth,http
-      dev_dependencies: test
-      part_file: src/rpc.p.dart
-      repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_rpc
-  - name: google_cloud_schema_google_showcase_v1beta1
-    apis:
-      - path: schema/google/showcase/v1beta1
-    copyright_year: "2025"
-    keep:
-      - test/compliance_test.dart
-      - test/echo_test.dart
-      - test/showcase_server.dart
-      - dart_test.yaml
-    output: generated/google_cloud_showcase_v1beta1
-    roots:
-      - showcase
-      - googleapis
-    skip_publish: true
-    specification_format: protobuf
-    dart:
-      dev_dependencies: path,test,test_utils
-      repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_showcase_v1beta1
-  - name: google_cloud_secretmanager_v1
-    apis:
-      - path: google/cloud/secretmanager/v1
-    copyright_year: "2025"
-    keep:
-      - test/create_and_update_recording.json
-      - test/secret_test.dart
-    output: generated/google_cloud_secretmanager_v1
-    specification_format: protobuf
-    dart:
-      dev_dependencies: googleapis_auth,test,test_utils
-      repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_secretmanager_v1
-  - name: google_cloud_src_google_protobuf
+  - name: google_cloud_protobuf_test_messages_proto3
     apis:
       - path: src/google/protobuf
     keep:
@@ -449,6 +397,58 @@ libraries:
     dart:
       dev_dependencies: path,test,test_utils
       repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_protojson_conformance
+  - name: google_cloud_rpc
+    apis:
+      - path: google/rpc
+    copyright_year: "2025"
+    keep:
+      - lib/exceptions.dart
+      - lib/service_client.dart
+      - lib/src/exceptions.dart
+      - lib/src/versions.dart
+      - lib/src/vm.dart
+      - lib/src/web.dart
+      - test/client_test.dart
+      - test/exceptions_test.dart
+      - test/status_test.dart
+      - lib/src/rpc.p.dart
+    output: generated/google_cloud_rpc
+    specification_format: protobuf
+    dart:
+      dependencies: googleapis_auth,http
+      dev_dependencies: test
+      part_file: src/rpc.p.dart
+      repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_rpc
+  - name: google_cloud_secretmanager_v1
+    apis:
+      - path: google/cloud/secretmanager/v1
+    copyright_year: "2025"
+    keep:
+      - test/create_and_update_recording.json
+      - test/secret_test.dart
+    output: generated/google_cloud_secretmanager_v1
+    specification_format: protobuf
+    dart:
+      dev_dependencies: googleapis_auth,test,test_utils
+      repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_secretmanager_v1
+  - name: google_cloud_showcase_v1beta1
+    apis:
+      - path: schema/google/showcase/v1beta1
+    copyright_year: "2025"
+    keep:
+      - dart_test.yaml
+      - test/compliance_test.dart
+      - test/echo_test.dart
+      - test/showcase_server.dart
+    output: generated/google_cloud_showcase_v1beta1
+    roots:
+      - showcase
+      - googleapis
+    skip_publish: true
+    specification_format: protobuf
+    dart:
+      dev_dependencies: path,test,test_utils
+      repository_url: https://github.com/googleapis/google-cloud-dart/tree/main/generated/google_cloud_showcase_v1beta1
   - name: google_cloud_type
     apis:
       - path: google/type
