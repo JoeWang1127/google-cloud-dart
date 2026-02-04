@@ -12,39 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'dart:convert';
-
-import 'package:googleapis/storage/v1.dart' as storage;
+import 'package:google_cloud_protobuf/protobuf.dart';
+import 'package:google_cloud_rpc/service_client.dart';
 import 'package:http/http.dart' as http;
 
 import '../google_cloud_storage.dart';
-import 'googleapis_converters.dart';
+import 'bucket_metadata_json.dart';
 
-Future<T> _translateException<T>(Future<T> Function() body) async {
-  try {
-    return await body();
-  } on storage.DetailedApiRequestError catch (e) {
-    final responseBody = jsonEncode(e.jsonResponse);
-    final response = http.Response(
-      responseBody,
-      e.status!,
-      headers: {'content-type': 'application/json'},
-    );
-    throw ServiceException.fromHttpResponse(response, responseBody);
-  }
+class _JsonEncodableWrapper implements JsonEncodable {
+  final Object json;
+
+  _JsonEncodableWrapper(this.json);
+
+  @override
+  Object? toJson() => json;
 }
 
 /// API for storing and retrieving potentially large, immutable data objects.
 ///
 /// See [Google Cloud Storage](https://cloud.google.com/storage).
 final class Storage {
-  final storage.StorageApi _api;
+  final ServiceClient _client;
   final String projectId;
-  final http.Client _client;
 
   Storage({required http.Client client, required this.projectId})
-    : _client = client,
-      _api = storage.StorageApi(client);
+    : _client = ServiceClient(client: client);
 
   /// Create a new Google Cloud Storage bucket.
   ///
@@ -55,13 +47,75 @@ final class Storage {
   Future<BucketMetadata> createBucket(
     BucketMetadata metadata, {
     RetryRunner retry = defaultRetry,
-  }) async => fromGoogleApisBucket(
-    await retry.run(
-      () => _translateException(
-        () => _api.buckets.insert(toGoogleApisBucket(metadata), projectId),
-      ),
-    ),
-  );
+  }) async => await retry.run(() async {
+    final url = Uri.https('storage.googleapis.com', '/storage/v1/b');
+    final queryParams = {'project': projectId};
+
+    final j = await _client.post(
+      url.replace(queryParameters: queryParams),
+      body: _JsonEncodableWrapper(bucketMetadataToJson(metadata)),
+    );
+    return bucketMetadataFromJson(j as Map<String, Object?>);
+  }, isIdempotent: true);
+
+  /// Update a Google Cloud Storage bucket.
+  ///
+  /// If set, `ifMetagenerationMatch` makes updating the bucket metadata
+  /// conditional on whether the bucket's metageneration matches the provided
+  /// value. If the metageneration does not match, a
+  /// [PreconditionFailedException] is thrown.
+  ///
+  /// If set, `predefinedAcl` applies a predefined set of access controls to the
+  /// bucket, such as `"publicRead"`. If [UniformBucketLevelAccess.enabled] is
+  /// `true`, then setting `predefinedAcl` will result in a
+  /// [BadRequestException].
+  ///
+  /// `projection` controls the level of detail returned in the response. A
+  /// value of `"full"` returns all bucket properties, while a value of
+  /// `"noAcl"` (the default) omits the `owner`, `acl`, and `defaultObjectAcl`
+  /// properties.
+  ///
+  /// If set, `userProject` is the project to be billed for this request. This
+  /// argument must be set for [Requester Pays] buckets.
+  ///
+  /// See [API reference docs](https://cloud.google.com/storage/docs/json_api/v1/buckets/patch).
+  ///
+  /// [Requester Pays]: https://docs.cloud.google.com/storage/docs/requester-pays
+  Future<BucketMetadata> patchBucket(
+    String bucketName,
+    BucketMetadata metadata, {
+    int? ifMetagenerationMatch,
+    // TODO(https://github.com/googleapis/google-cloud-dart/issues/115):
+    // support ifMetagenerationNotMatch.
+    //
+    // If `ifMetagenerationNotMatch` is set, the server will respond with a 304
+    // status code and an empty body. This will cause `buckets.patch` to throw
+    // `TypeError` during JSON deserialization.
+    String? predefinedAcl,
+    String? predefinedDefaultObjectAcl,
+    String? projection,
+    String? userProject,
+    RetryRunner retry = defaultRetry,
+  }) async => await retry.run(() async {
+    final url = Uri(
+      scheme: 'https',
+      host: 'storage.googleapis.com',
+      pathSegments: ['storage', 'v1', 'b', bucketName],
+    );
+    final queryParams = {
+      'ifMetagenerationMatch': ?ifMetagenerationMatch?.toString(),
+      'project': projectId,
+      'predefinedAcl': ?predefinedAcl,
+      'predefinedDefaultObjectAcl': ?predefinedDefaultObjectAcl,
+      'projection': ?projection,
+      'userProject': ?userProject,
+    };
+    final j = await _client.patch(
+      url.replace(queryParameters: queryParams),
+      body: _JsonEncodableWrapper(bucketMetadataToJson(metadata)),
+    );
+    return bucketMetadataFromJson(j as Map<String, Object?>);
+  }, isIdempotent: ifMetagenerationMatch != null);
 
   /// Information about a [Google Cloud Storage object].
   ///
