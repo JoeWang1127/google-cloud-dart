@@ -13,14 +13,14 @@
 # limitations under the License.
 
 language: dart
-version: 0.7.0-54411738ab10-20260203213312
+version: not available
 sources:
   conformance:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
     sha256: 55912546338433f465a552e9ef09930c63b9eb697053937416890cff83a8622d
   googleapis:
-    commit: 211d22fa6dfabfa52cbda04d1aee852a01301edf
-    sha256: 9aa6e5167f76b869b53b71f9fe963e6e17ec58b2cbdeb30715ef95b92faabfc5
+    commit: 2ca944988d375005f3d72770c086bfa83bd87d07
+    sha256: cc6973d405211e846f2d419e6b4a487ad3748895460c57f5dc0ff30ddfffdc39
   protobuf:
     commit: b407e8416e3893036aee5af9a12bd9b6a0e2b2e6
     sha256: 55912546338433f465a552e9ef09930c63b9eb697053937416890cff83a8622d
@@ -34,14 +34,14 @@ default:
     api_keys_environment_variables: GOOGLE_API_KEY
     issue_tracker_url: https://github.com/googleapis/google-cloud-dart/issues
     packages:
-      package:google_cloud_api: ^0.4.0
-      package:google_cloud_iam_v1: ^0.4.0
-      package:google_cloud_location: ^0.4.0
-      package:google_cloud_logging_type: ^0.4.0
-      package:google_cloud_longrunning: ^0.4.0
-      package:google_cloud_protobuf: ^0.4.0
-      package:google_cloud_rpc: ^0.4.0
-      package:google_cloud_type: ^0.4.0
+      package:google_cloud_api: ^0.5.0
+      package:google_cloud_iam_v1: ^0.5.0
+      package:google_cloud_location: ^0.5.0
+      package:google_cloud_logging_type: ^0.5.0
+      package:google_cloud_longrunning: ^0.5.0
+      package:google_cloud_protobuf: ^0.5.0
+      package:google_cloud_rpc: ^0.5.0
+      package:google_cloud_type: ^0.5.0
       package:googleapis_auth: ^2.0.0
       package:http: ^1.3.0
     prefixes:
@@ -56,7 +56,7 @@ default:
       proto:google.protobuf: package:google_cloud_protobuf/protobuf.dart
       proto:google.rpc: package:google_cloud_rpc/rpc.dart
       proto:google.type: package:google_cloud_type/type.dart
-    version: 0.4.0
+    version: 0.5.0
 libraries:
   - name: google_cloud_ai_generativelanguage_v1beta
     apis:
